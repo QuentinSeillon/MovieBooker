@@ -19,7 +19,7 @@ export class AuthService {
     async register(registerDto: RegisterDto) {
         const { email, password } = registerDto;
 
-        const existingUser = this.userService.findByEmail(email);
+        const existingUser = await this.userService.findByEmail(email);
 
         if (existingUser) {
             throw new BadRequestException('Un compte existe déjà avec cette adresse mail');
@@ -43,7 +43,7 @@ export class AuthService {
             throw new UnauthorizedException('Identifiants invalides');
         }
 
-        const isPasswordValid = await bcrypt.compare(password, user.password):
+        const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
             throw new UnauthorizedException('Mot de passe incorrect');
         }
