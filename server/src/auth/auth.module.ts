@@ -5,6 +5,8 @@ import { UserModule } from 'src/user/user.module';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
 
+// pour la mise en place de JWT => https://docs.nestjs.com/security/authentication#jwt-token
+
 @Module({
   imports: [
     UserModule,
