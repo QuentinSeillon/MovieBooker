@@ -2,7 +2,8 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto } from 'src/dto/register.dto';
 import { LoginDto } from 'src/dto/login.dto';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { User } from 'src/user/user.entity';
 
 //Pour les annotation de Swagger (github donné par la doc de nest.js)=> https://github.com/nestjs/nest/tree/master/sample/11-swagger
 
@@ -13,6 +14,15 @@ export class AuthController {
 
     @Post('register')
     @ApiOperation({ summary: 'Inscription d\'un utilisateur' })
+    @ApiResponse({ 
+        status: 201, 
+        description: 'Utilisateur enregistré',
+        type: User
+    })
+    @ApiResponse({ 
+        status: 403,
+        description: 'Forbidden.'
+    })
     async register(@Body() registerDto: RegisterDto) {
         return this.authService.register(registerDto);
     }

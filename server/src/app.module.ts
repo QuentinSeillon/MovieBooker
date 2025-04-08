@@ -6,6 +6,9 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { User } from './user/user.entity';
+import { MovieController } from './movie/movie.controller';
+import { MovieService } from './movie/movie.service';
+import { MovieModule } from './movie/movie.module';
 
 // pour TypeOrmModule => https://docs.nestjs.com/recipes/sql-typeorm#getting-started
 // pour la configCustom pour le .env => https://docs.nestjs.com/techniques/configuration#custom-configuration-files
@@ -30,8 +33,9 @@ import { User } from './user/user.entity';
     }),
     AuthModule,
     UserModule,
+    MovieModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, MovieController],
+  providers: [AppService, MovieService],
 })
 export class AppModule {}
