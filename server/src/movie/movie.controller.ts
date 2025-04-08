@@ -1,5 +1,5 @@
 import { Controller, Get, Query, UseGuards } from '@nestjs/common';
-import { ApiOperation, ApiQuery, ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiTags, ApiBearerAuth, ApiProperty } from '@nestjs/swagger';
 import { MovieService } from './movie.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
@@ -12,7 +12,7 @@ export class MovieController {
 
     @Get()
     @ApiOperation({ summary: 'Récupération de tout les films' })
-    @ApiQuery({ name:'sort', default: 'popularity', required: false, description: 'Indiquer comment les resultats sera trié'})
+    @ApiQuery({ name: 'sort', enum: ['popularity.desc', 'primary_release_date.asc']})
     async getAllMovies(@Query('sort') sort: string) {
         return this.movieService.getAllMovie(sort);
     }
