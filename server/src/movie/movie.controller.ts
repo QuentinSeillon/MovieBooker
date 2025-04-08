@@ -1,5 +1,5 @@
 import { Controller, Get, Query, UseGuards } from '@nestjs/common';
-import { ApiOperation, ApiQuery, ApiTags, ApiBearerAuth, ApiProperty } from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 import { MovieService } from './movie.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
@@ -12,15 +12,17 @@ export class MovieController {
 
     @Get()
     @ApiOperation({ summary: 'Récupération de tout les films' })
+    @ApiQuery({ name: 'page', default: 1, description: 'Afficher plus de résultats', required: false})
     @ApiQuery({ name: 'sort', enum: ['popularity.desc', 'primary_release_date.asc']})
-    async getAllMovies(@Query('sort') sort: string) {
-        return this.movieService.getAllMovie(sort);
+    async getAllMovies(@Query('page') page: number, @Query('sort') sort: string) {
+        return this.movieService.getAllMovie(page, sort);
     }
 
     @Get('current')
     @ApiOperation({ summary: 'Liste des films actuellement en salle' })
-    async getCurrentMovies() {
-        return this.movieService.getCurrentMovies();
+    @ApiQuery({ name: 'page', default: 1, description: 'Afficher plus de résultats', required: false})
+    async getCurrentMovies(@Query('page') page: number) {
+        return this.movieService.getCurrentMovies(page);
     }
 
     @Get('searchMovie')
@@ -31,16 +33,16 @@ export class MovieController {
         return this.movieService.searchMovies(query, page);
     }
 
+    @Get('genre')
+    @ApiOperation({ summary: 'Obtenir la liste des genre' })
+    async getGenre() {
+        return this.movieService.getGenre();
+    }
+
     @Get(':id')
     @ApiOperation({ summary: 'Rechercher un film va son ID'})
     @ApiQuery({ name: 'movie_id', required: true, description: 'Rechercher un film via son ID' })
     async getMovieById(@Query('movie_id') id: string) {
         return this.movieService.searchMovieById(id);
-    }
-
-    @Get('genre')
-    @ApiOperation({ summary: 'Obtenir la liste des genre' })
-    async getGenre() {
-        return this.movieService.getGenre();
     }
 }

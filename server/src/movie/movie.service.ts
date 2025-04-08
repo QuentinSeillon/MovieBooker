@@ -3,8 +3,8 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class MovieService {
 
-    async getAllMovie(sort: string) {
-        const url = `${process.env.TMDB_URL}/discover/movie?page=1&sort_by=${sort}.desc`;
+    async getAllMovie(page: number, sort: string) {
+        const url = `${process.env.TMDB_URL}/discover/movie?page=${page}&sort_by=${sort}.desc`;
         const options = {
             method: 'GET',
             headers: {
@@ -18,8 +18,8 @@ export class MovieService {
         return data;
     }
 
-    async getCurrentMovies() {
-        const url = `${process.env.TMDB_URL}/movie/now_playing?page=1`
+    async getCurrentMovies(page: number) {
+        const url = `${process.env.TMDB_URL}/movie/now_playing?page=${page}`
         const options = {
             method: 'GET',
             headers: {
@@ -64,7 +64,7 @@ export class MovieService {
     }
 
     async getGenre() {
-        const url = `${process.env.TMDB_URL}/genre/movie/list?language=en`
+        const url = `${process.env.TMDB_URL}/genre/movie/list?language=fr`;
         const options = {
             method: 'GET',
             headers: {
