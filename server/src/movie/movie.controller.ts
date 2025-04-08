@@ -32,8 +32,9 @@ export class MovieController {
     @ApiOperation({ summary: 'Recherche d\'un film spécifique' })
     @ApiQuery({ name: 'query', required: true, description: 'Titre du film à recherher'})
     @ApiQuery({ name: 'page', required: false, default: 1, description: 'Page'})
-    async searchMovies(@Query('query') query: string, @Query('page') page: number) {
-        return this.movieService.searchMovies(query, page);
+    @ApiQuery({ name: 'sort',  default: 'popularity.desc', required: false})
+    async searchMovies(@Query('query') query: string, @Query('page') page: number, @Query('sort') sort: string) {
+        return this.movieService.searchMovies(query, page, sort);
     }
 
     @Get('genre')
