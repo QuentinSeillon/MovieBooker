@@ -3,6 +3,9 @@ import { ApiOperation, ApiQuery, ApiTags, ApiBearerAuth } from '@nestjs/swagger'
 import { MovieService } from './movie.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
+// Pour les annotations @Api ... => https://docs.nestjs.com/openapi/types-and-parameters#enums
+// Pour l'implementation de @UseGuards => https://docs.nestjs.com/guards#binding-guards
+
 @ApiTags('movies')
 @ApiBearerAuth()
 @Controller('movies')
