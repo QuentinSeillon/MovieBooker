@@ -12,8 +12,9 @@ export class MovieController {
 
     @Get()
     @ApiOperation({ summary: 'Récupération de tout les films' })
-    async getAllMovies() {
-        return this.movieService.getAllMovie();
+    @ApiQuery({ name:'sort', default: 'popularity', required: false, description: 'Indiquer comment les resultats sera trié'})
+    async getAllMovies(@Query('sort') sort: string) {
+        return this.movieService.getAllMovie(sort);
     }
 
     @Get('current')
