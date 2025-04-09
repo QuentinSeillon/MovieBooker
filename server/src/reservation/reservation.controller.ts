@@ -16,15 +16,18 @@ export class ReservationController {
 
     @Post()
     @ApiOperation({ summary: 'Ajoute un film à liste de réservation' })
-    async createReservation(@Body() reservationDto: ReservationDto) {
+    @ApiQuery({ name: 'date', required: true, description: 'Ajouter la date de la séance'})
+    async createReservation(@Body() reservationDto: ReservationDto, @Query('date')date: Date) {
         const userId = reservationDto.user_id;
 
         const existingUser = await this.userService.findById(userId);
 
         const existingMovie = await this.movieService.searchMovieById(reservationDto.movie_id);
 
+        const sessionAlreadyBooked = await this.reservationService.checkAvailability(date, userId);
+
         if(existingUser && existingMovie) {
-            return this.reservationService.createReservation(existingUser, existingMovie);
+            return this.reservationService.createReservation(existingUser, existingMovie, date);
         } 
 
         return ({ message: 'Erreur avec l\'id de l\'utilisateur ou l\'id du film'})

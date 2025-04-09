@@ -11,4 +11,8 @@ export class ReservationDto {
   @IsNotEmpty()
   user_id: string;
 
+  @ApiProperty({ example: '2025-04-09 17:00:00.00'})
+  @IsNotEmpty()
+  date: Date;
+
 }

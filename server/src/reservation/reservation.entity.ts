@@ -19,6 +19,10 @@ export class Reservation {
     @ApiProperty({ example: '/2Nti3gYAX513wvhp8IiLL6ZDyOm.jpg', description: 'Affiche du film'})
     affiche: string
 
+    @Column()
+    @ApiProperty({ example: '2025-04-09 16:15:41.72'})
+    date: Date
+
     @ManyToOne(() => User, (user) => user.reservations, { eager: true })
     @JoinColumn({ name: 'user_id' })
     user_id: User["id"];
