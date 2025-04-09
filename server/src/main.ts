@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as session from 'express-session';
 
 // pour la mise en place de Swagger => https://docs.nestjs.com/openapi/introduction#bootstrap
 // pour la sécu avec Bearer auth => https://docs.nestjs.com/openapi/security#bearer-authentication
@@ -9,6 +10,19 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
+
+  app.use(
+    session({
+      secret: 'my-secret',
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        secure: false,
+        httpOnly: true,
+        maxAge: 3600000, // 1 heure
+      },
+    }),
+  )
 
   const config = new DocumentBuilder()
     .setTitle('MovieBooker')

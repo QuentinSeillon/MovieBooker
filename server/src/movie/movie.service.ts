@@ -57,7 +57,7 @@ export class MovieService {
             return data;
     }
     
-    async searchMovieById(id: string) {
+    async searchMovieById(id: number) {
         const url = `${process.env.TMDB_URL}/movie/${id}`
         const options = {
             method: 'GET',

@@ -45,8 +45,8 @@ export class MovieController {
 
     @Get(':id')
     @ApiOperation({ summary: 'Rechercher un film va son ID'})
-    @ApiQuery({ name: 'movie_id', required: true, description: 'Rechercher un film via son ID' })
-    async getMovieById(@Query('movie_id') id: string) {
+    @ApiQuery({ name: 'id', required: true, description: 'Rechercher un film via son ID' })
+    async getMovieById(@Query('id') id: number) {
         return this.movieService.searchMovieById(id);
     }
 }
