@@ -15,6 +15,6 @@ export class User {
     @ApiProperty({ example: 'Password', description: 'le mot de pass de l\'utilisateur' })
     password: string;
 
-    @OneToMany(() => Reservation, (reservation) => reservation.user)
+    @OneToMany(() => Reservation, (reservation) => reservation.user_id)
     reservations: Reservation[];
 }

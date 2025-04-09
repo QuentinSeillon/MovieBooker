@@ -1,9 +1,7 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Reservation } from './reservation.entity';
 import { Repository } from 'typeorm';
-import { ReservationDto } from 'src/dto/reservation.dto';
-import { User } from 'src/user/user.entity';
 
 @Injectable()
 export class ReservationService {
@@ -22,9 +20,29 @@ export class ReservationService {
           });
         
         return await this.reservationRepository.save(reservation);
-
     }
 
+    async getAllReservationsByUser(user_id: string) {
+        const reservations = await this.reservationRepository.query(
+            `SELECT * FROM reservations WHERE user_id = $1`,
+            [user_id]
+        );
 
+        if (reservations.length <= 0 ) {
+            throw new NotFoundException(`Cette utilisateur n\'as pas de liste de réservation`);
+        }
+        
+        return reservations;    
+    }
+
+    async deleteReservation(reservation_id: string) {
+        const reservation = await this.reservationRepository.delete(reservation_id)
+
+        if (reservation.affected === 0) {
+            throw new NotFoundException(`Aucune réservation trouvée avec l'id ${reservation_id}`);
+        }
+
+        return { message: 'Réservation supprimée avec succès' };
+    }
 
 }
