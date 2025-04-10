@@ -23,3 +23,4 @@ git clone https://github.com/ton-pseudo/moviebooker.git
 cd moviebooker
 
 npm install
+```
