@@ -2,21 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function Home() {
-  const { user, logout, register } = useAuth();
-  const navigate = useNavigate();
-
-  const goToRegister = () => {
-    navigate("/register");
-  };
-
-  const handleLogout = async () => {
-    await logout();
-    navigate("/");
-  };
-
-  const goToMovies = () => {
-    navigate("/movies");
-  };
+  const { user } = useAuth();
 
 
   return (
