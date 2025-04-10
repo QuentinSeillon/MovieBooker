@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Movies from "./pages/Movies";
 import Navbar from "./components/NavBar";
 import ProtectedRoute from "./components/ProtectedRoute";
+import MoviesCurrent from "./pages/MoviesCurrent";
 
 function App() {
   return (
@@ -21,6 +22,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Movies />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/movies/current"
+          element={
+            <ProtectedRoute>
+              <MoviesCurrent />
             </ProtectedRoute>
           }
         />

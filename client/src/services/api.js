@@ -111,3 +111,23 @@ export const searchMovies = async (query, page = 1, sort = "popularity.desc") =>
 
   return await response.json();
 };
+
+export const getCurrentMovies = async (page = 1) => {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(`${API_URL}/movies/current?page=${page}`, {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+      "Content-Type": "application/json"
+    },
+    credentials: "include"
+  });
+
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.message || "Erreur lors de la récupération des films actuels");
+  }
+
+  return await response.json();
+};
