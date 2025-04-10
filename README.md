@@ -12,6 +12,8 @@ L’API est déployée sur **Render** :
 - 🔗 **Documentation Swagger (production)** : [https://moviebooker-8pfr.onrender.com/api-docs](https://moviebooker-8pfr.onrender.com/api-docs)
 - 🔗 **Documentation Swagger (local)** : [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
+- 🔗 **lien site (en cours de construction)** : [https://moviebooker-qs.netlify.app/)
+
 ---
 
 ## 🛠️ Installation locale
@@ -30,7 +32,7 @@ npm install
 ```
 3. **Créer un fichier .env à la racine avec les variables suivantes :**
 
-Il vous faudra un compte sur [https://www.themoviedb.org/] pour récuperer vos token et clé API
+Il vous faudra un compte sur [https://www.themoviedb.org/) pour récuperer vos token et clé API
 ```bash
 DB_HOST=localhost
 DB_PORT=5432
