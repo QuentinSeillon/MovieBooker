@@ -35,8 +35,8 @@ export class AuthController {
         return this.authService.login(loginDto);
     }
 
-    @Get('check-session')
-    checkSession(@Session() session: Record<string, any>) {
-    return session;
-    }
+    // @Get('check-session')
+    // checkSession(@Session() session: Record<string, any>) {
+    // return session;
+    // }
 }

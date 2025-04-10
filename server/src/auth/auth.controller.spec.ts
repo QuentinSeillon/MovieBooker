@@ -69,17 +69,17 @@ describe('AuthController', () => {
     });
   });
 
-  describe('checkSession', () => {
-    it('should return the current session object', () => {
-      const session = {
-        authenticatedUser: {
-          email: 'test@example.com',
-        },
-      };
+  // describe('checkSession', () => {
+  //   it('should return the current session object', () => {
+  //     const session = {
+  //       authenticatedUser: {
+  //         email: 'test@example.com',
+  //       },
+  //     };
 
-      const result = controller.checkSession(session as any);
+  //     const result = controller.checkSession(session as any);
 
-      expect(result).toBe(session);
-    });
-  });
+  //     expect(result).toBe(session);
+  //   });
+  // });
 });

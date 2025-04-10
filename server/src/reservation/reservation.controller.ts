@@ -6,7 +6,7 @@ import { MovieService } from 'src/movie/movie.service';
 import { ApiBearerAuth, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
-@ApiTags('reservations')
+@ApiTags('Réservations')
 @ApiBearerAuth()
 @Controller('reservation')
 @UseGuards(JwtAuthGuard)
