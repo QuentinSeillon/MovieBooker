@@ -67,8 +67,11 @@ Ajouter ce token dans l'en-tête Authorization: Bearer <token> pour les requête
 | GET     | `/movies`        | Voir la liste des films *(auth req.)* |
 | GET     | `/movies/current`| Voir la liste des films actuel        |
 | GET     | `/movies/searchMovie`| Rechercher un film                |
+| GET    |  `/movies/genre` | Obtenir la liste des genre de film     |
+| GET    |  `/movies/{id}`   | Rechercher un film spéficique        |
 | POST    | `/reservations`  | Réserver un film *(auth req.)*         |
 | GET     | `/reservations`  | Voir ses réservations *(auth req.)*    |
+| DELETE |  `/reservation/{id}` | Supprimer une reservation         |
 
 ## 📬 Exemple de requête
 
