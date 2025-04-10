@@ -24,6 +24,12 @@ async function bootstrap() {
     }),
   )
 
+  app.enableCors({
+    origin: 'http://localhost:5173', // ton frontend
+    credentials: true,              // important pour les cookies
+  });
+  
+
   const config = new DocumentBuilder()
     .setTitle('MovieBooker')
     .setDescription('Plateforme de reservation de séance cinéma')
