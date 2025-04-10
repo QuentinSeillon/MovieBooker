@@ -24,6 +24,31 @@ export const login = async (email, password) => {
   return data;
 };
 
+export const register = async (email, password) => {
+  const response = await fetch(`${API_URL}/auth/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify({ email, password }),
+  });
+
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.message || "Erreur lors de l'inscription");
+  }
+
+  const data = await response.json();
+
+  if (data.access_token) {
+    localStorage.setItem("token", data.access_token);
+  }
+
+  return data;
+};
+
+
 export const logout = async () => {
   await fetch(`${API_URL}/auth/logout`, {
     method: "POST",

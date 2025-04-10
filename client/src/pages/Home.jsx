@@ -2,17 +2,22 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function Home() {
-  const { user, logout } = useAuth();
+  const { user, logout, register } = useAuth();
   const navigate = useNavigate();
 
   const goToLogin = () => {
     navigate("/login");
   };
 
-  const handleLogout = async () => {
-    await logout();        // Appelle le backend et nettoie le contexte
-    navigate("/");    // Redirige vers la page de login (ou "/" si tu préfères)
+  const goToRegister = () => {
+    navigate("/register");
   };
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/");
+  };
+
 
   return (
     <div>
@@ -21,7 +26,12 @@ function Home() {
       </h1>
 
       {!user && (
-        <button onClick={goToLogin}>Se connecter</button>
+        <>
+          <button onClick={goToLogin}>Se connecter</button>
+          <button onClick={goToRegister} style={{ marginLeft: "10px" }}>
+            S'inscrire
+          </button>
+        </>
       )}
 
       {user && (

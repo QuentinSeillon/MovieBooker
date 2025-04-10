@@ -1,13 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getMe } from "../services/api";
-import { logout as logoutApi } from "../services/api";
+import { getMe, logout as logoutApi, register as registerApi } from "../services/api";
 
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // pour afficher un spinner si besoin
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     getMe()
@@ -21,6 +20,12 @@ export function AuthProvider({ children }) {
     setUser(currentUser);
   };
 
+  const register = async (email, password) => {
+    await registerApi(email, password);
+    const currentUser = await getMe(); 
+    setUser(currentUser);
+  };
+
   const logout = async () => {
     try {
       await logoutApi();
@@ -31,7 +36,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading }}>
+    <AuthContext.Provider value={{ user, login, logout, register, loading }}>
       {children}
     </AuthContext.Provider>
   );
