@@ -48,6 +48,7 @@ export class AuthController {
     }
 
     @Post('logout')
+    @ApiOperation({ summary: 'Déconnexion de l\'utilisateur'})
     logout(@Session() session: Record<string, any>, @Res() res: Response): void {
         session.destroy((err) => {
             if (err) {
