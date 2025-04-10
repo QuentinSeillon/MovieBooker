@@ -65,6 +65,8 @@ Ajouter ce token dans l'en-tête Authorization: Bearer <token> pour les requête
 | POST    | `/auth/register` | Créer un compte utilisateur            |
 | POST    | `/auth/login`    | Se connecter et obtenir un token JWT  |
 | GET     | `/movies`        | Voir la liste des films *(auth req.)* |
+| GET     | `/movies/current`| Voir la liste des films actuel        |
+| GET     | `/movies/searchMovie`| Rechercher un film                |
 | POST    | `/reservations`  | Réserver un film *(auth req.)*         |
 | GET     | `/reservations`  | Voir ses réservations *(auth req.)*    |
 
