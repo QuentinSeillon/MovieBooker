@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Movies from "./pages/Movies";
-import Navbar from "./components/NavBar";
+import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import MoviesCurrent from "./pages/MoviesCurrent";
 
