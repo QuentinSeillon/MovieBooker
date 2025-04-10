@@ -15,9 +15,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/current" element={<MoviesCurrent />} />
 
          {/* Page protégée */}
-         <Route
+         {/* <Route
           path="/movies"
           element={
             <ProtectedRoute>
@@ -32,7 +34,7 @@ function App() {
               <MoviesCurrent />
             </ProtectedRoute>
           }
-        />
+        /> */}
       </Routes>
     </BrowserRouter>
   );
