@@ -11,15 +11,12 @@ const Navbar = () => {
     };
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-warning px-3 position-relative">
-          {/* Logo à gauche */}
           <Link className="navbar-brand text-dark" to="/">🎬 MovieBooker</Link>
     
-          {/* Lien Films centré */}
           <div className="position-absolute top-50 start-50 translate-middle">
             <Link className="nav-link text-dark fw-bold" to="/movies">Films</Link>
           </div>
     
-          {/* Menu à droite */}
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
               {user ? (

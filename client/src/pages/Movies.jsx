@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllMovies, searchMovies } from "../services/api";
+import { useAuth } from "../context/AuthContext";
+
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -44,7 +46,7 @@ const Movies = () => {
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
-            setPage(1); // remet à la première page lors d'une nouvelle recherche
+            setPage(1);
           }}
         />
 
@@ -68,7 +70,7 @@ const Movies = () => {
       <div className="row">
         {movies.map((movie, idx) => (
           <div className="col-6 col-md-3 mb-4" key={idx}>
-            <div className="card h-100">
+            <div className="card h-100 shadow card-hover">
               <img
                 src={`https://image.tmdb.org/t/p/w300${movie.backdrop_path}`}
                 className="card-img-top"
@@ -89,6 +91,13 @@ const Movies = () => {
                 >
                   {movie.title}
                 </h5>
+              </div>
+              <div className="position-absolute top-0 end-0 m-2">
+                <i
+                  className="bi bi-bookmark-plus-fill text-warning fs-4"
+                  style={{ cursor: "pointer" }}
+                  title="Réserver ce film"
+                ></i>
               </div>
             </div>
           </div>
