@@ -9,36 +9,39 @@ const Navbar = () => {
         await logout();
         navigate("/");
     };
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-warning px-3">
-        <Link className="navbar-brand text-dark" to="/">🎬 CinéBook</Link>
-
-        <div className="collapse navbar-collapse">
+    return (
+        <nav className="navbar navbar-expand-lg navbar-dark bg-warning px-3 position-relative">
+          {/* Logo à gauche */}
+          <Link className="navbar-brand text-dark" to="/">🎬 MovieBooker</Link>
+    
+          {/* Lien Films centré */}
+          <div className="position-absolute top-50 start-50 translate-middle">
+            <Link className="nav-link text-dark fw-bold" to="/movies">Films</Link>
+          </div>
+    
+          {/* Menu à droite */}
+          <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-                <Link className="nav-link text-dark" to="/movies">Films</Link>
-            </li>
-            {user ? (
+              {user ? (
                 <li className="nav-item">
-                    <button className="btn btn-link nav-link text-dark" onClick={handleLogout}>
+                  <button className="btn btn-link nav-link text-dark" onClick={handleLogout}>
                     Se déconnecter
-                    </button>
+                  </button>
                 </li>
-            ) : (
+              ) : (
                 <>
-                <li className="nav-item">
+                  <li className="nav-item">
                     <Link className="nav-link text-dark" to="/login">Se connecter</Link>
-                </li>
-                <li className="nav-item">
+                  </li>
+                  <li className="nav-item">
                     <Link className="nav-link text-dark" to="/register">S'inscrire</Link>
-                </li>
+                  </li>
                 </>
-            )}
+              )}
             </ul>
-        </div>
-    </nav>
-
-  );
+          </div>
+        </nav>
+      );
 };
 
 export default Navbar;

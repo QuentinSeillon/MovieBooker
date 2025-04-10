@@ -75,8 +75,20 @@ const Movies = () => {
                 alt={movie.title}
                 style={{ height: "300px", objectFit: "cover" }}
               />
-              <div className="card-body">
-                <h5 className="card-title text-center">{movie.title}</h5>
+              <div className="card-body position-relative" style={{ height: "100px" }}>
+                <p
+                  className="small fst-italic position-absolute top-0 start-0 m-2"
+                  style={{ opacity: 0.7 }}
+                >
+                  #{movie.id}
+                </p>
+
+                <h5
+                  className="card-title position-absolute top-50 start-50 translate-middle m-0 text-center"
+                  style={{ width: "100%" }}
+                >
+                  {movie.title}
+                </h5>
               </div>
             </div>
           </div>
