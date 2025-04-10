@@ -21,6 +21,7 @@ L’API est déployée sur **Render** :
 ```bash
 git clone https://github.com/ton-pseudo/moviebooker.git
 cd moviebooker
+cd server
 ```
 
 2. **Installer les dépendances**
