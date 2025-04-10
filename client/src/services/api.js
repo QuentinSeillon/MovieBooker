@@ -70,3 +70,44 @@ export const getMe = async () => {
 
   return data.authenticatedUser || null;
 };
+
+export const getAllMovies = async (page = 1, sort = "popularity.desc") => {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(`${API_URL}/movies?page=${page}&sort=${sort}`, {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+      "Content-Type": "application/json"
+    },
+    credentials: "include"
+  });
+
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.message || "Erreur lors de la récupération des films");
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export const searchMovies = async (query, page = 1, sort = "popularity.desc") => {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(`${API_URL}/movies/searchMovie?query=${encodeURIComponent(query)}&page=${page}&sort=${sort}`, {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+      "Content-Type": "application/json"
+    },
+    credentials: "include"
+  });
+
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.message || "Erreur lors de la recherche");
+  }
+
+  return await response.json();
+};

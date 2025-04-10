@@ -24,30 +24,46 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2>Inscription</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      <form onSubmit={handleSubmit} className="p-4 border rounded bg-light" style={{ minWidth: "300px" }}>
+        <h2 className="mb-3 text-center">Inscription</h2>
+  
+        {error && <p className="text-danger text-center">{error}</p>}
+  
+        <input
+          type="text"
+          className="form-control mb-3"
+          placeholder="Nom"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+  
         <input
           type="email"
+          className="form-control mb-3"
           placeholder="Adresse email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <br />
+  
         <input
           type="password"
+          className="form-control mb-3"
           placeholder="Mot de passe"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <br />
-        <button type="submit">S'inscrire</button>
+  
+        <button type="submit" className="btn btn-warning w-100">
+          S'inscrire
+        </button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
+  
 };
 
 export default Register;
