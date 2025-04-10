@@ -16,7 +16,7 @@ function Login() {
     try {
       await loginApi(email, password);
       login();
-      navigate("/");
+      navigate("/movies");
     } catch (err) {
       setError(err.message);
     }
