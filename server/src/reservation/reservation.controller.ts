@@ -1,11 +1,15 @@
-import { Body, Controller, Delete, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { ReservationService } from './reservation.service';
 import { ReservationDto } from 'src/dto/reservation.dto';
 import { UserService } from 'src/user/user.service';
 import { MovieService } from 'src/movie/movie.service';
-import { ApiOperation, ApiQuery } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
+@ApiTags('reservations')
+@ApiBearerAuth()
 @Controller('reservation')
+@UseGuards(JwtAuthGuard)
 export class ReservationController {
     constructor(
         private readonly reservationService: ReservationService,
