@@ -3,33 +3,6 @@
 MovieBooker est une API REST développée avec **NestJS**, **TypeORM**, et **PostgreSQL**, permettant aux utilisateurs de consulter des films et d’effectuer des réservations.  
 L’authentification se fait via **JWT**, avec un système de rôles pour restreindre l'accès à certaines actions.
 
-# Archetecture de l'application
-
-                      +---------------------------+
-                      |        Client Frontend    |
-                      |   (React, Postman, etc.)  |
-                      +------------+--------------+
-                                   |
-                                   v
-                        +----------+----------+
-                        |      API NestJS     |
-                        |   (MovieBooker)     |
-                        +----------+----------+
-                                   |
-              +--------------------+--------------------+
-              |                                         |
-              v                                         v
-+----------------------------+             +---------------------------+
-|     Auth Module            |             |    Reservation Module     |
-|  (JWT, Register, Login)    |             |  (Book, View Reservations)|
-+----------------------------+             +---------------------------+
-              |
-              v
-     +---------------------+
-     |  PostgreSQL Database |
-     +---------------------+
-
-
 ---
 
 ## 🚀 Déploiement
