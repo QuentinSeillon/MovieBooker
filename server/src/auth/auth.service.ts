@@ -1,9 +1,9 @@
 import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { RegisterDto } from 'src/dto/register.dto';
-import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt';
 import { LoginDto } from 'src/dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
+import { UserService } from 'src/user/user.service';
 
 // pour bcrypt => https://docs.nestjs.com/security/encryption-and-hashing#hashing
 // pour le catch d'erreur => https://docs.nestjs.com/exception-filters#built-in-http-exceptions
