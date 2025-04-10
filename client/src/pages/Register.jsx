@@ -31,15 +31,6 @@ const Register = () => {
         {error && <p className="text-danger text-center">{error}</p>}
   
         <input
-          type="text"
-          className="form-control mb-3"
-          placeholder="Nom"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-  
-        <input
           type="email"
           className="form-control mb-3"
           placeholder="Adresse email"
