@@ -25,7 +25,7 @@ async function bootstrap() {
   )
 
   app.enableCors({
-    origin: ['http://localhost:5173', 'https://moviebooker-qs.netlify.app'], // ton frontend
+    origin: 'https://moviebooker-qs.netlify.app', // ton frontend 'http://localhost:5173', 
     credentials: true,              // important pour les cookies
   });
   
